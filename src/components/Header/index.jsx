@@ -5,6 +5,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { checkWallet, connectWalletHelper, shortWallet } from "../../helper";
 import { updateSignerAddress } from "../../features/signer/signerSlice";
 import Cookies from "js-cookie";
+import Toast from "../toast";
 
 Header.propTypes = {};
 
@@ -17,8 +18,9 @@ function Header(props) {
     if (singer) dispatch(updateSignerAddress(Cookies.get("signer")));
   }, [dispatch]);
 
-  const connectWallet = () => {
-    connectWalletHelper();
+  const connectWallet = async () => {
+    const err = await connectWalletHelper();
+     console.log(err)
     dispatch(updateSignerAddress(Cookies.get("signer")));
   };
   console.log(signer)
@@ -34,6 +36,7 @@ function Header(props) {
           <div>{shortWallet()}</div>
         )}
       </div>
+      <Toast />
     </div>
   );
 }

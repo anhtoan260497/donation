@@ -23,9 +23,15 @@ export const connectWalletHelper = async () => {
     // It also provides an opportunity to request access to write
     // operations, which will be performed by the private key
     // that MetaMask manages for the user.
-    await provider.send("eth_requestAccounts", []);
-    signer = await provider.getSigner();
-    Cookies.set('signer', signer.address)
+
+    try {
+      signer = await provider.getSigner();
+    } catch (err) {
+      return err
+    }
+    console.log('hihihihi')
+    // console.log(signer)
+    // Cookies.set('signer', signer.address)
     return signer
   }
 };
