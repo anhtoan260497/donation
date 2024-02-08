@@ -1,0 +1,28 @@
+.header-container-fluid {
+    height: 64px;
+    border: 1px solid red;
+
+    .header-container {
+        max-width: 1200px;
+        height: 100%;
+        margin : auto;
+        display: flex;
+        justify-content: flex-end;
+        align-items: center;
+
+        .connect-button {
+            padding :  10px;
+            background-color: rgb(77, 202, 115);
+            border-radius: 10px;
+            border:none;
+            outline: none;
+            font-weight: 600;
+            color : white;
+            cursor: pointer;
+
+            &:active {
+                color : black;
+            }
+        }
+    }
+}
